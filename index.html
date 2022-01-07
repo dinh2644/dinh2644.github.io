@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+   Tu Dinh
+   Final Project: Portfolio 
+   Date: December 20th, 2021
+
+-->
+<html lang="en"> <!--Let's visually impaired people understand the language the webpage is in-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.41, maximum-scale=1" />
+		<meta name="description" content="Tu Dinh's Portfolio">
+		<meta name="keywords" content="Tu Dinh">
+		<title>Tu Dinh</title>
+		<!--Browser icon-->
+		<link rel="icon" href="assets/img/pokeball.png">
+		<!--CSS-->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<!--Fonts-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.typekit.net/ufg7hqz.css">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+		<!--Embedded style-->
+		<style>
+		 h1 {font-family: 'Bungee', cursive;}
+		 #about-section {background-color: #F0F0F0;background-size: cover;padding: 50px;min-height:100vh;padding-bottom: 100px;}
+		 .def-indent {margin-left: 24px;}	 
+		 .self-indent {margin-left: 48px;}
+		</style>
+	</head>
+<body>
+
+<!--Navigation Bar-->
+<div id="nav">
+	<a href="index.html" class="nav-item right"><div class="logo-image"><img src="assets/img/home.png" alt="home-icon"> </div></a>
+	<a href="projects.html" class="nav-item left">PROJECTS</a> 
+	<a href="education.html" class="nav-item left">EDUCATION</a> 
+	<a href="index.html#about-section" class="nav-item left">ABOUT</a>
+</div>
+
+<!--Home section-->
+<div class="page-content">
+	<section id="home-section">
+		<div class="container row">
+		<div class="container row" id="landing-container"><img id="enso" src="assets/img/enso.png" alt="enso-circle" class="rotate"><!--Enso cirlce-->
+		<div class="container column">
+		<div class="content">
+			<h1 id="tu-dinh" style="font-family: 'Pacifico', cursive;">Tu Dinh</h1> <!--Front name-->
+		</div>
+			<p id="app"></p>
+		</div>
+		</div>
+			<a href="#about-section" class="arrow"></a>
+		</div>
+	</section>
+</div>
+
+<!--About Section-->
+<section class="container column" id="about-section">
+	<h1 class="subtitle">WELCOME!</h1>
+		<div class="container row" id="img-console">
+			<div id="console">
+
+			<!--First line-->
+			<span class="purple-color">from</span> <span class="white-color">tuDinh </span><span class="purple-color">import</span> <span class="white-color">aboutMe</span>
+			<br>
+			<br>
+
+			<!--Class person-->
+			<span class="purple-color">class</span> <span class="blue-color"><b>Person</b></span><span class="white-color">:</span>
+			<br>
+			<div class="def-indent">
+			<span class="purple-color">def</span> <span class="blue-color">info</span> <span class="white-color">(<span class="red-color">self</span>, name, age, state)<span class="white-color">:</span></span>
+			</div>
+			<div class="self-indent">
+			<span class="white-color"><span class="red-color">self</span>.name</span> <span class="white-color">= name</span>
+			<br><span class="white-color"><span class="red-color">self</span>.age</span> <span class="white-color">= age</span>
+			<br><span class="white-color"><span class="red-color">self</span>.state</span> <span class="white-color">= state</span>
+			</div>
+			<br>
+			<br><span class="white-color">x = Person(<span class="green-color">"Tu Dinh"</span>, <span class="yellow-color">19</span>, <span class="green-color">"New York"</span>)</span>
+			<br><span class="orange-color">print<span class="white-color">(x.name)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.age)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.state)</span></span>
+			<br><span class="white-color">------------------</span>
+			<br>
+			<br><span class="white-color">Tu Dinh</span>
+			<br><span class="white-color">19</span>
+			<br><span class="white-color">New York</span>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<!--Class education-->
+			<span class="purple-color">class</span> <span class="blue-color"><b>Education</b></span><span class="white-color">:</span>
+			<br>
+			<div class="def-indent">
+			<span class="purple-color">def</span> <span class="blue-color">info</span> <span class="white-color">(<span class="red-color">self</span>, school, expGraduation, resume)<span class="white-color">:</span></span>
+			</div>
+			<div class="self-indent">
+			<span class="white-color"><span class="red-color">self</span>.school</span> <span class="white-color">= school</span>
+			<br><span class="white-color"><span class="red-color">self</span>.expGraduation</span><span class="white-color">= expected graduation</span>
+			<br><span class="white-color"><span class="red-color">self</span>.resume</span> <span class="white-color">= resume</span>
+			</div>
+			<br>
+			<br><span class="white-color">x = Education(<span class="green-color">"Rockland Community College"</span>, <span class="green-color">"May 2023"</span>, <span class="green-color">"Resume"</span>)</span>
+			<br><span class="orange-color">print<span class="white-color">(x.name)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.age)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.resume)</span></span>
+			<br><span class="white-color">------------------</span>
+			<br>
+			<br><span class="white-color">Rockland Community College</span>
+			<br><span class="white-color">May 2023</span>
+			<br><span><a href="assets/resume.pdf" class="white-color">resume.pdf</a></span>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+			<!--Class contact-->
+			<span class="purple-color">class</span> <span class="blue-color"><b>Contact</b></span><span class="white-color">:</span>
+			<br>
+			<div class="def-indent">
+			<span class="purple-color">def</span> <span class="blue-color">info</span> <span class="white-color">(<span class="red-color">self</span>, github, linkedin, email)<span class="white-color">:</span></span>
+			</div>
+			<div class="self-indent">
+			<span class="white-color"><span class="red-color">self</span>.github</span> <span class="white-color">= school</span>
+			<br><span class="white-color"><span class="red-color">self</span>.linkedin</span> <span class="white-color">= expected graduation</span>
+			<br><span class="white-color"><span class="red-color">self</span>.email</span> <span class="white-color">= resume</span>
+			</div>
+			<br>
+			<br><span class="white-color">x = Contact(<span class="green-color">"Github"</span>, <span class="green-color">"LinkedIn"</span>, <span class="green-color">"Email"</span>)</span>
+			<br><span class="orange-color">print<span class="white-color">(x.github)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.linkedin)</span></span>
+			<br><span class="orange-color">print<span class="white-color">(x.email)</span></span>
+			<br><span class="white-color">------------------</span>
+			<br>
+			<br><span><a href="https://github.com/dinh2644" class="white-color">Github</a></span>
+			<br><span><a href="https://www.linkedin.com/in/tu-dinh-1b94001a0/" class="white-color">LinkedIn</a></span>
+			<br><span><a href="mailto:tdinh1@sunyrockland.edu" class="white-color">Email</a></span>
+			<br>
+			<br>
+		</div> <img src="assets/img/pfp.jpg" id="about-img" alt="pfp">
+	</div>
+</section>
+
+<!--Footer-->
+<div class="container column" id="footer2">
+	<div class="container row" id="social-container"> 
+		<a href="https://www.linkedin.com/in/tu-dinh1/" target="_blank">LinkedIn</a> 
+		<span>•</span> 
+		<a href="https://github.com/dinh2644" target="_blank">Github</a> 
+		<span>•</span> 
+		<a href="mailto:tdinh1@sunyrockland.edu" target="_blank">Email</a> 
+	</div>
+	<div>
+		<p id="copyright">Tu Dinh &copy;&nbsp;2021</p>
+	</div>
+</div>
+
+</body>
+</html>
