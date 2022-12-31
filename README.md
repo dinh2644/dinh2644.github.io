@@ -1,4 +1,4 @@
-Portfolio v1
+portfolio v1
 
 CSP 14900 Project | Portfolio website
 
