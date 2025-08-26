@@ -20,7 +20,7 @@ const ContactForm = () => {
         setErrorMessage('');
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('https://formspree.io/f/xldwepoa', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formValues),
@@ -73,7 +73,7 @@ const ContactForm = () => {
 
                         {/* Form */}
                         <form onSubmit={onSubmit} className="space-y-5" method='POST'>
-                            <label className="block">
+                            <label className="block" htmlFor='name'>
                                 <span className="text-gray-700 font-medium">Name</span>
                                 <input 
                                     type="text" 
@@ -82,7 +82,7 @@ const ContactForm = () => {
                                     className="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </label>
-                            <label className="block">
+                            <label className="block" htmlFor='email'>
                                 <span className="text-gray-700 font-medium">Email</span>
                                 <input 
                                     type="email" 
@@ -91,7 +91,7 @@ const ContactForm = () => {
                                     className="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </label>
-                            <label className="block">
+                            <label className="block" htmlFor='message'>
                                 <span className="text-gray-700 font-medium">Message</span>
                                 <textarea 
                                     name="message" 
