@@ -72,7 +72,7 @@ const ContactForm = () => {
                         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
 
                         {/* Form */}
-                        <form onSubmit={onSubmit} className="space-y-5">
+                        <form onSubmit={onSubmit} className="space-y-5" method='POST'>
                             <label className="block">
                                 <span className="text-gray-700 font-medium">Name</span>
                                 <input 
