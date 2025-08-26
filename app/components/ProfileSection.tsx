@@ -18,7 +18,7 @@ const ProfileSection = () => {
 						<h2 className="text-lg md:text-xl text-gray-600">Software Engineer</h2>
 						<div className="h-px w-16 bg-gray-200 mx-auto my-4" />
 						<p className="text-sm md:text-base text-gray-600 max-w-xs mx-auto leading-relaxed">
-							Computer Science, B.S. @ Binghamton University '25 🎓 | Interested in Full Stack, Distributed Systems & AI 🌎 
+							Computer Science, B.S. @ Binghamton University &apos;25 🎓 | Interested in Full Stack, Distributed Systems & AI 🌎 
 						</p>
 					</div>
 
