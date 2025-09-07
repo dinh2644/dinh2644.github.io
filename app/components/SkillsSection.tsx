@@ -103,7 +103,7 @@ const SkillsSection = () => {
 
   return (
     <div className="bg-white px-6 pb-9">
-      <div className="space-y-4 max-w-5xl mx-auto">
+      <div className="space-y-4 max-w-fill mx-auto">
         <div>
           <h3 className="text-lg font-semibold text-gray-900 text-center md:text-left">
             Core Skills
