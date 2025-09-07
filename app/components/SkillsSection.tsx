@@ -121,7 +121,7 @@ const SkillsSection = () => {
                 </h4>
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {skillGroup.items.map((skill, i) => (
+                {skillGroup.items.map((skill) => (
                   <span
                     key={skill}
                     className={`px-2.5 py-1 text-sm bg-gray-50 text-gray-700 rounded-full ring-1 ring-gray-200`}
