@@ -12,7 +12,7 @@ export default function MinimalistPortfolio() {
 				</div>
 
 				{/* Right Column */}
-				<div className="md:col-span-3 flex flex-col md:justify-center">
+				<div className="md:col-span-3 flex flex-col md:justify-center mb-5">
 					{/* Skills Section */}
 					<div className="">
 						<SkillsSection />

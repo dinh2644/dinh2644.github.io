@@ -5,7 +5,7 @@ const ExperienceSection = () => {
 			role: 'Associate Software Engineer',
 			company: 'Enable Healthcare Inc',
 			period: 'Sep. 2025 - Present',
-			highlights: 'Develop, maintain, and secure REST APIs, backend services, and web interfaces',
+			highlights: 'Develop, maintain, and secure REST APIs, backend services, web interfaces, and AI solutions for healthcare practitioners',
 		},
 		{
 			id: 2,
@@ -53,7 +53,7 @@ const ExperienceSection = () => {
 
 	return (
 		<div className="bg-white px-6">
-			<div className="space-y-4 max-w-2xl mx-auto">
+			<div className="space-y-4 max-w-5xl mx-auto">
 				<div>
 					<h3 className="text-lg font-semibold text-gray-900 text-center md:text-left">Experience</h3>
 					<div className="h-px w-full bg-gray-200 mt-2" />

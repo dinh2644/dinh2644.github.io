@@ -1,3 +1,5 @@
+'use client'
+
 const SkillsSection = () => {
   const skills = [
     {
@@ -101,7 +103,7 @@ const SkillsSection = () => {
 
   return (
     <div className="bg-white px-6 pb-9">
-      <div className="space-y-4 max-w-2xl mx-auto">
+      <div className="space-y-4 max-w-5xl mx-auto">
         <div>
           <h3 className="text-lg font-semibold text-gray-900 text-center md:text-left">
             Core Skills
@@ -119,10 +121,10 @@ const SkillsSection = () => {
                 </h4>
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {skillGroup.items.map((skill) => (
+                {skillGroup.items.map((skill, i) => (
                   <span
                     key={skill}
-                    className="px-2.5 py-1 text-sm bg-gray-50 text-gray-700 rounded-full ring-1 ring-gray-200"
+                    className={`px-2.5 py-1 text-sm bg-gray-50 text-gray-700 rounded-full ring-1 ring-gray-200`}
                   >
                     {skill}
                   </span>
