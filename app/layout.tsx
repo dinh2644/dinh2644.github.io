@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -7,67 +7,27 @@ const geistSans = Geist({
 	subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-});
+const description = 'Software engineer turning ideas into real products through full-stack development and applied AI engineering.';
 
 export const metadata: Metadata = {
-	title: 'Dinh',
-	description:
-		'Welcome to my portfolio! I am a passionate developer who believes in simplicity and effectiveness. I focus on creating straightforward solutions that solve real problems, with clean code and intuitive user experiences.',
-	keywords: [
-		'Software Developer',
-		'Web Developer',
-		'Clean Code',
-		'Simple Design',
-		'JavaScript',
-		'TypeScript',
-		'React',
-		'Next.js',
-		'User Experience',
-		'Problem Solving',
-		'Effective Solutions',
-		'Web Development',
-		'Frontend Development',
-		'Backend Development',
-		'Brandon Dinh',
-	],
+	metadataBase: new URL('https://dinh2644.github.io'),
+	title: 'Brandon Dinh',
+	description,
 	authors: [{ name: 'Brandon Dinh' }],
 	creator: 'Brandon Dinh',
+	keywords: ['Brandon Dinh', 'Software Engineer', 'Full-Stack Development', 'Applied AI Engineering', 'Portfolio'],
 	openGraph: {
-		title: 'Brandon Dinh - Developer Portfolio',
-		description: 'Passionate developer creating simple and effective solutions. Explore my projects and development approach.',
+		title: 'Brandon Dinh',
+		description,
 		url: 'https://dinh2644.github.io/',
-		siteName: 'Brandon Dinh - Portfolio',
-		images: [
-			{
-				url: '/code.png',
-				width: 1200,
-				height: 630,
-				alt: 'Brandon Dinh - Developer Portfolio',
-			},
-		],
+		siteName: 'Brandon Dinh',
+		images: [{ url: '/assets/portrait.webp', width: 720, height: 1046, alt: 'Ink portrait of Brandon Dinh' }],
 		locale: 'en_US',
 		type: 'website',
 	},
-	// twitter: {
-	// 	card: 'summary_large_image',
-	// 	title: 'Brandon Dinh - Developer',
-	// 	description: 'Passionate developer creating simple and effective solutions. Explore my projects and development approach.',
-	// 	creator: '@yourusername',
-	// 	images: ['/og-image.jpg'],
-	// },
 	robots: {
 		index: true,
 		follow: true,
-		googleBot: {
-			index: true,
-			follow: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1,
-		},
 	},
 };
 
@@ -78,7 +38,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} bg-paper font-sans text-ink antialiased`}>{children}</body>
 		</html>
 	);
 }

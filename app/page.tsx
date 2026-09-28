@@ -1,28 +1,17 @@
-import ProfileSection from './components/ProfileSection';
-import SkillsSection from './components/SkillsSection';
-import ExperienceSection from './components/ExperienceSection';
+import Profile from './components/Profile';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
 
-export default function MinimalistPortfolio() {
+export default function Portfolio() {
 	return (
-		<main className="min-h-screen md:h-screen flex flex-col bg-white sm:pb-0">
-			<div className="flex-1 grid grid-cols-1 md:grid-cols-5">
-				{/* Left Column */}
-				<div className="md:col-span-2 border-b md:border-b-0 md:border-r border-gray-200 md:flex md:items-center">
-					<ProfileSection />
+		<main className="min-h-screen bg-paper text-ink">
+			<div className="mx-auto grid max-w-[1440px] grid-cols-1 lg:min-h-screen lg:grid-cols-[500px_1fr]">
+				<div className="border-b border-rule px-6 py-10 sm:px-10 lg:flex lg:flex-col lg:border-b-0 lg:border-r lg:px-12 lg:py-14">
+					<Profile />
 				</div>
-
-				{/* Right Column */}
-				<div className="md:col-span-3 flex flex-col md:justify-center mb-5">
-					{/* Skills Section */}
-					<div className="">
-						<SkillsSection />
-					</div>
-
-					{/* Experience Section */}
-					<div>
-						<ExperienceSection />
-					</div>
-
+				<div className="flex flex-col justify-center gap-12 px-6 py-10 sm:px-10 lg:px-20 lg:py-12">
+					<Experience />
+					<Projects />
 				</div>
 			</div>
 		</main>

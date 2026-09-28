@@ -1,128 +1,95 @@
-'use client'
-import React, { useState } from 'react'
+'use client';
 
-const ContactForm = () => {
-    const [toggle, setToggle] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [successMessage, setSuccessMessage] = useState('')
-    const [errorMessage, setErrorMessage] = useState('');
+import { useRef, useState, type FormEvent } from 'react';
+import { MailIcon } from './Icons';
 
+// Submissions go through Formspree, which forwards them to my inbox.
+const FORMSPREE_URL = 'https://formspree.io/f/xldwepoa';
 
-    const onSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        if (loading) return
+const field = 'mt-1.5 block w-full border border-rule-strong bg-paper px-3 py-2 text-sm text-ink outline-none transition-colors focus:border-ink';
+const label = 'text-xs uppercase tracking-[0.18em] text-muted';
 
-        const form = e.target as HTMLFormElement
-        const formValues = Object.fromEntries(new FormData(form).entries())
+type Status = 'idle' | 'sending' | 'sent' | 'error';
 
-        setLoading(true)
-        setSuccessMessage('')
-        setErrorMessage('');
+const ContactForm = ({ triggerClassName }: { triggerClassName?: string }) => {
+	const dialogRef = useRef<HTMLDialogElement>(null);
+	const [status, setStatus] = useState<Status>('idle');
 
-        try {
-            const response = await fetch('https://formspree.io/f/xldwepoa', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formValues),
-            });
+	const open = () => {
+		setStatus('idle');
+		dialogRef.current?.showModal();
+	};
+	const close = () => dialogRef.current?.close();
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`)
-            }
+	const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (status === 'sending') return;
+		const form = e.currentTarget;
+		setStatus('sending');
+		try {
+			const res = await fetch(FORMSPREE_URL, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+				body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+			});
+			if (!res.ok) throw new Error(`HTTP ${res.status}`);
+			form.reset();
+			setStatus('sent');
+		} catch (err) {
+			console.error(err);
+			setStatus('error');
+		}
+	};
 
-            await response.json();
-            setSuccessMessage('Thank you for contacting! I will get back to you shortly :)')
-            form.reset()
-            
-        } catch (err) {
-            console.error(err)
-            setErrorMessage('An error occurred. Please try again later.')
-        } finally {
-            setLoading(false)
-        }
-    }
+	return (
+		<>
+			<button type="button" onClick={open} aria-label="Contact me" title="Contact me" className={triggerClassName}>
+				<MailIcon className="h-[19px] w-[19px]" />
+			</button>
 
-    // Close modal & reset states 
-    const handleClose = () => {
-        setToggle(false);
-        setSuccessMessage('');
-        setErrorMessage('');
-    }
+			<dialog
+				ref={dialogRef}
+				onClick={(e) => e.target === dialogRef.current && close()}
+				className="w-[calc(100%-2rem)] max-w-md border border-rule bg-paper p-0 text-left text-ink shadow-[0_24px_60px_rgba(40,30,15,0.18)] backdrop:bg-ink/40"
+			>
+				<div className="relative flex flex-col gap-6 p-8">
+					<button type="button" onClick={close} aria-label="Close contact form" className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center text-muted outline-none transition-colors hover:text-ink focus-visible:ring-1 focus-visible:ring-ink">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="h-5 w-5" aria-hidden>
+							<path d="M6 6l12 12M18 6L6 18" />
+						</svg>
+					</button>
 
-    return (
-        <>
-            {toggle && (
-                <div 
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 transition-opacity duration-300"
-                    onClick={handleClose}
-                >
-                    <div 
-                        className="relative w-full max-w-lg p-8 mx-4 bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-out"
-                        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside the modal
-                    >
-                        {/* Close Button */}
-                        <button 
-                            onClick={handleClose}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-                            aria-label="Close contact form"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                        
-                        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
+					<h2 className="m-0 text-center text-base font-normal uppercase tracking-[0.25em]">Get in touch</h2>
 
-                        {/* Form */}
-                        <form onSubmit={onSubmit} className="space-y-5" method='POST'>
-                            <label className="block" htmlFor='name'>
-                                <span className="text-gray-700 font-medium">Name</span>
-                                <input 
-                                    type="text" 
-                                    name="name" 
-                                    required 
-                                    className="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </label>
-                            <label className="block" htmlFor='email'>
-                                <span className="text-gray-700 font-medium">Email</span>
-                                <input 
-                                    type="email" 
-                                    name="email" 
-                                    required 
-                                    className="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </label>
-                            <label className="block" htmlFor='message'>
-                                <span className="text-gray-700 font-medium">Message</span>
-                                <textarea 
-                                    name="message" 
-                                    required 
-                                    rows={4}
-                                    className="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </label>
-                            <button 
-                                disabled={loading} 
-                                type="submit"
-                                className="w-full px-4 py-3 font-semibold text-white bg-black rounded-md hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-300"
-                            >
-                                {loading ? 'Sending...' : 'Send Message'}
-                            </button>
-                            {successMessage && <p className="text-green-600 text-center font-medium mt-4">{successMessage}</p>}
-                            {errorMessage && <p className="text-red-600 text-center font-medium mt-4">{errorMessage}</p>}
-                        </form>
-                    </div>
-                </div>
-            )}
+					<form onSubmit={onSubmit} className="flex flex-col gap-5">
+						<label className="block">
+							<span className={label}>Name</span>
+							<input type="text" name="name" required autoFocus autoComplete="name" className={field} />
+						</label>
+						<label className="block">
+							<span className={label}>Email</span>
+							<input type="email" name="email" required autoComplete="email" className={field} />
+						</label>
+						<label className="block">
+							<span className={label}>Message</span>
+							<textarea name="message" required rows={5} className={`${field} resize-none`} />
+						</label>
+						<button
+							type="submit"
+							disabled={status === 'sending'}
+							className="min-h-[44px] bg-ink px-4 py-3 text-xs uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink-soft disabled:cursor-not-allowed disabled:bg-muted"
+						>
+							{status === 'sending' ? 'Sending…' : 'Send message'}
+						</button>
+						<p role="status" className="m-0 min-h-[1.25rem] text-center text-sm">
+							{status === 'sent' && <span className="text-ink-soft">Thank you, I&apos;ll get back to you shortly.</span>}
+							{status === 'error' && <span className="text-accent">Something went wrong. Please try again later.</span>}
+						</p>
+					</form>
+				</div>
+			</dialog>
+		</>
+	);
+};
 
-            {/* Trigger Button */}
-            <button 
-                onClick={() => setToggle(true)}
-                className="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-gray-900 transition-colors duration-300"
-            >
-                Contact Me
-            </button>
-        </>
-    )
-}
-
-export default ContactForm
+export default ContactForm;

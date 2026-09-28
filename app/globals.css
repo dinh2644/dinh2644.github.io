@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* The page scrolls on short screens, but without a visible scrollbar. */
+html {
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* Thin ink scrollbar that matches the experience tab rail. */
+.ink-scroll::-webkit-scrollbar {
+    width: 2px;
+}
+.ink-scroll::-webkit-scrollbar-track {
+    background: #DDD6C9;
+}
+.ink-scroll::-webkit-scrollbar-thumb {
+    background: #1B1A18;
+}
+@supports (-moz-appearance: none) {
+    .ink-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: #1B1A18 #DDD6C9;
+    }
+}
 
 /* Webkit-based browsers */
 .no-scrollbar::-webkit-scrollbar {
